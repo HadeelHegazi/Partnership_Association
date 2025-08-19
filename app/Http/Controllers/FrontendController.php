@@ -19,4 +19,11 @@ class FrontendController extends Controller
 
         return redirect()->back();
     }
+
+    public function viewMessages()
+    {
+        $messages = JoinUs::latest()->get();
+        
+        return view('admin.messages', compact('messages'));
+    }
 }

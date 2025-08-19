@@ -8,3 +8,6 @@ Route::get('/', function () {
 })->name('home');
 
 Route::post('/join-us', [\App\Http\Controllers\FrontendController::class, 'storeJoinUs'])->name('join-us.store');
+
+// Admin route to view messages
+Route::get('/admin/messages', [\App\Http\Controllers\FrontendController::class, 'viewMessages'])->name('admin.messages');
