@@ -104,13 +104,9 @@ export const ContactSection: React.FC = () => {
                                     {errors.message && <p className="text-red-500">{errors.message}</p>}
                                 </div>
 
-                                <div className={`flex flex-col gap-4 sm:flex-row ${isRTL ? 'sm:flex-row-reverse' : ''}`}>
-                                    <Button type="submit" disabled={processing} className="flex-1 bg-blue-900 text-white hover:bg-blue-800">
+                                <div className="text-center">
+                                    <Button type="submit" disabled={processing} className="w-full bg-blue-900 text-white hover:bg-blue-800 px-8 py-3">
                                         {translations.contact.form.submit[language]}
-                                    </Button>
-
-                                    <Button type="button" className="flex-1 bg-yellow-600 text-white hover:bg-yellow-500">
-                                        {translations.contact.form.donate[language]}
                                     </Button>
                                 </div>
                             </form>

@@ -49,12 +49,21 @@ export const GetInvolvedSection: React.FC = () => {
         </div>
         
         <div className="text-center">
-          <Button 
-            size="lg" 
-            className="bg-gradient-to-r from-blue-900 to-yellow-600 hover:from-blue-800 hover:to-yellow-500 text-white px-12 py-4 text-xl shadow-lg"
-          >
-            {translations.getInvolved.button[language]}
-          </Button>
+          <div className={`flex flex-col sm:flex-row gap-4 justify-center ${isRTL ? 'sm:flex-row-reverse' : ''}`}>
+            <Button 
+              size="lg" 
+              className="bg-gradient-to-r from-blue-900 to-yellow-600 hover:from-blue-800 hover:to-yellow-500 text-white px-12 py-4 text-xl shadow-lg"
+            >
+              {translations.getInvolved.button[language]}
+            </Button>
+            
+            <Button 
+              size="lg" 
+              className="bg-yellow-600 hover:bg-yellow-500 text-white px-12 py-4 text-xl shadow-lg"
+            >
+              {translations.contact.form.donate[language]}
+            </Button>
+          </div>
         </div>
       </div>
     </section>
