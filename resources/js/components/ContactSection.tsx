@@ -39,7 +39,7 @@ export const ContactSection: React.FC = () => {
     };
 
     return (
-        <section className="bg-gray-100 py-16" id="section-5">
+        <section className="bg-blue-50 py-16" id="section-5">
             <div className="container mx-auto px-4">
                 <h2 className={`mb-12 text-4xl font-bold text-blue-900 ${isRTL ? 'text-center' : 'text-center'}`}>
                     {translations.contact.title[language]}
