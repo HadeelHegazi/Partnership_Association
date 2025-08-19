@@ -1,11 +1,13 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useLanguage } from './LanguageContext';
 import { translations } from './translations';
 import { Button } from './ui/button';
 import { ImageWithFallback } from './figma/ImageWithFallback';
+import { AboutUsPopup } from './AboutUsPopup';
 
 export const HeroSection: React.FC = () => {
   const { language, direction } = useLanguage();
+  const [aboutUsOpen, setAboutUsOpen] = useState(false);
 
   return (
     <section className="relative h-screen flex items-center justify-center overflow-hidden">
@@ -33,6 +35,7 @@ export const HeroSection: React.FC = () => {
           <Button
             size="lg"
             className="bg-blue-900 hover:bg-blue-800 text-white px-8 py-3 text-lg shadow-lg"
+            onClick={() => setAboutUsOpen(true)}
           >
             {translations.hero.buttons.about[language]}
           </Button>
@@ -45,6 +48,9 @@ export const HeroSection: React.FC = () => {
           </Button>
         </div>
       </div>
+
+      {/* About Us Popup */}
+      <AboutUsPopup open={aboutUsOpen} onOpenChange={setAboutUsOpen} />
     </section>
   );
 };
