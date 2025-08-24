@@ -1,0 +1,53 @@
+networks:
+    peaceisrael:
+        driver: bridge
+
+services:
+    app:
+        build:
+            context: ./docker
+            dockerfile: Dockerfile
+        container_name: peaceisrael_app_container
+        volumes:
+            - ./:/var/www/html
+        networks:
+            - peaceisrael
+        command: [ "sh", "./scripts/app_container_script.sh" ]
+        restart: always
+
+    mysql:
+        image: mariadb:latest
+        container_name: mysql_container
+        ports:
+            - "3307:3306"
+        environment:
+            - "MYSQL_ROOT_PASSWORD=root"
+            - "MYSQL_DATABASE=peaceisrael"
+        networks:
+            - peaceisrael
+        volumes:
+            - ".mysql:/var/lib/mysql"
+        restart: always
+
+    redis:
+        image: redis:alpine
+        container_name: redis_container
+        networks:
+            - peaceisrael
+        volumes:
+            - ".redis:/data"
+        restart: always
+
+    nginx:
+        image: nginx:alpine
+        container_name: nginx_container
+        ports:
+          - "80:80"
+          - "443:443"
+        volumes:
+          - ./:/var/www/html
+          - ./nginx/conf:/etc/nginx/conf.d/
+          - ./nginx/ssl:/etc/nginx/ssl/
+        networks:
+          - peaceisrael
+        restart: always
