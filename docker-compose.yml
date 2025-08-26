@@ -47,7 +47,8 @@ services:
         volumes:
           - ./:/var/www/html
           - ./nginx/conf:/etc/nginx/conf.d/
-          - ./nginx/ssl:/etc/nginx/ssl/
+          - /etc/letsencrypt/live/peaceisrael.org/fullchain.pem:/etc/ssl/certs/fullchain.pem:ro
+          - /etc/letsencrypt/live/peaceisrael.org/privkey.pem:/etc/ssl/private/privkey.pem:ro
         networks:
           - peaceisrael
         restart: always
